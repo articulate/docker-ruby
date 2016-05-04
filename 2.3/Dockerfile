@@ -5,4 +5,4 @@ RUN apt-get update -qq \
   libyaml-dev postgresql-client-9.4 xvfb nodejs \
   && rm -rf /var/lib/apt/lists/*
 
-RUN curl -o /etc/ImageMagick-6/policy.xml https://s3.amazonaws.com/articulate-docker-assets/policy.xml
+COPY imagemagick-policy.xml /etc/ImageMagick-6/policy.xml
