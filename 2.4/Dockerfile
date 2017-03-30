@@ -16,7 +16,8 @@ ADD https://raw.githubusercontent.com/articulate/docker-consul-template-bootstra
 RUN bash /tmp/consul_template_install.sh && rm /tmp/consul_template_install.sh
 
 WORKDIR $SERVICE_ROOT
-USER $SERVICE_USER
+
+ONBUILD USER $SERVICE_USER
 
 ONBUILD ADD Gemfile* $SERVICE_ROOT/
 ONBUILD RUN bundle install
