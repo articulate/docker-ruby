@@ -16,14 +16,6 @@ RUN bash /tmp/consul_template_install.sh && rm /tmp/consul_template_install.sh
 RUN useradd --home $SERVICE_ROOT -ms /bin/bash $SERVICE_USER
 WORKDIR $SERVICE_ROOT
 
-ONBUILD ADD Gemfile* $SERVICE_ROOT/
-ONBUILD RUN bundle install
-
-ONBUILD ADD . $SERVICE_ROOT
-
-ONBUILD RUN chown -R $SERVICE_USER /$SERVICE_ROOT
-ONBUILD USER $SERVICE_USER
-
 ENV PORT 3000
 EXPOSE $PORT
 
