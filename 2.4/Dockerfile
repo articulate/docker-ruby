@@ -1,8 +1,5 @@
 FROM ruby:2.4
 
-ENV SERVICE_ROOT /service
-ENV SERVICE_USER service
-
 RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash -
 
 RUN apt-get update -qq \
@@ -13,10 +10,9 @@ RUN apt-get update -qq \
 ADD https://raw.githubusercontent.com/articulate/docker-consul-template-bootstrap/master/install.sh /tmp/consul_template_install.sh
 RUN bash /tmp/consul_template_install.sh && rm /tmp/consul_template_install.sh
 
-RUN useradd --home $SERVICE_ROOT -ms /bin/bash $SERVICE_USER
-WORKDIR $SERVICE_ROOT
+RUN useradd --home /service -ms /bin/bash service
+WORKDIR /service
 
-ENV PORT 3000
-EXPOSE $PORT
+EXPOSE 3000
 
 ENTRYPOINT ["/entrypoint.sh"]
