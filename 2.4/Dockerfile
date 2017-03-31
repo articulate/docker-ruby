@@ -13,6 +13,4 @@ RUN bash /tmp/consul_template_install.sh && rm /tmp/consul_template_install.sh
 RUN useradd --home /service -ms /bin/bash service
 WORKDIR /service
 
-EXPOSE 3000
-
 ENTRYPOINT ["/entrypoint.sh"]
