@@ -1,4 +1,4 @@
-FROM ruby:2.3-stretch
+FROM ruby:2.3
 
 ENV SERVICE_ROOT /service
 ENV SERVICE_USER service

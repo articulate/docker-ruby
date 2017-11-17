@@ -1,4 +1,4 @@
-FROM ruby:2.4
+FROM ruby:2.4-jessie
 
 ENV SERVICE_ROOT /service
 ENV SERVICE_USER service
