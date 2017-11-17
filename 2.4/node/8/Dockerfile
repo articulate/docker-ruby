@@ -1,4 +1,4 @@
-FROM ruby:2.4
+FROM ruby:2.4-stretch
 
 ENV SERVICE_ROOT /service
 ENV SERVICE_USER service
@@ -9,6 +9,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get update -qq \
   && apt-get -y install build-essential libpq-dev libqt4-dev git wget \
   libyaml-dev postgresql-client-9.4 xvfb nodejs \
+  && apt-get upgrade -y \
   && rm -rf /var/lib/apt/lists/*
 
 RUN set -ex \
