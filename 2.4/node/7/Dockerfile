@@ -2,7 +2,7 @@ FROM ruby:2.4-stretch
 
 ENV SERVICE_ROOT /service
 ENV SERVICE_USER service
-ENV YARN_VERSION 0.22.0
+ENV YARN_VERSION 1.3.2
 
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
 
