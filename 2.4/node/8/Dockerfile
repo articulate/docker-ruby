@@ -7,7 +7,8 @@ ENV YARN_VERSION 0.27.5
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 
 RUN apt-get update -qq \
-  && apt-get -y install build-essential libpq-dev libqt4-dev git wget \
+  && apt-get -y install build-essential libpq-dev git wget \
+  qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x \
   libyaml-dev postgresql-client-9.6 xvfb nodejs \
   && apt-get upgrade -y \
   && rm -rf /var/lib/apt/lists/*
