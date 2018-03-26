@@ -2,7 +2,6 @@ FROM ruby:2.4-alpine3.7
 
 ENV SERVICE_ROOT /service
 ENV SERVICE_USER service
-ENV NODE_VERSION 8.10.0
 
 RUN apk update && apk add libpq qt git wget yaml postgresql-client xvfb bash nodejs
 
