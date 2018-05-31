@@ -5,6 +5,8 @@ ENV SERVICE_USER service
 
 RUN apk update && apk add libpq qt git wget yaml postgresql-client xvfb bash nodejs binutils
 
+RUN apk update && apk upgrade binutils
+
 ADD https://raw.githubusercontent.com/articulate/docker-consul-template-bootstrap/master/install.sh /tmp/consul_template_install.sh
 RUN bash /tmp/consul_template_install.sh && rm /tmp/consul_template_install.sh
 
