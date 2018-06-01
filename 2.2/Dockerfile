@@ -4,7 +4,7 @@ ENV SERVICE_ROOT /service
 ENV SERVICE_USER service
 
 RUN apt-get update -qq \
-  && apt-get -y install build-essential libpq-dev libqt4-dev git wget \
+  && apt-get -y install make build-essential libpq-dev libqt4-dev git wget \
   libyaml-dev postgresql-client-9.4 xvfb nodejs npm \
   && apt-get upgrade -y \
   && rm -rf /var/lib/apt/lists/*
