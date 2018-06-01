@@ -3,9 +3,9 @@ FROM ruby:2.4-alpine3.7
 ENV SERVICE_ROOT /service
 ENV SERVICE_USER service
 
-RUN apk update && apk add libpq qt git wget yaml postgresql-client xvfb bash nodejs binutils jq sudo unzip 
+RUN apk add --no-cache libpq qt git wget yaml postgresql-client xvfb bash nodejs binutils jq sudo unzip
 
-RUN apk update && apk upgrade binutils jq sudo unzip 
+RUN apk upgrade --no-cache binutils jq sudo unzip
 
 ADD https://raw.githubusercontent.com/articulate/docker-consul-template-bootstrap/master/install.sh /tmp/consul_template_install.sh
 RUN bash /tmp/consul_template_install.sh && rm /tmp/consul_template_install.sh
