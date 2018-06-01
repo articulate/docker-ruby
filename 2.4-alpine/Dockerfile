@@ -3,7 +3,7 @@ FROM ruby:2.4-alpine3.7
 ENV SERVICE_ROOT /service
 ENV SERVICE_USER service
 
-RUN apk add --no-cache libpq qt git wget yaml postgresql-client xvfb bash nodejs binutils jq sudo unzip
+RUN apk add --no-cache make libpq qt git wget yaml postgresql-client xvfb bash nodejs binutils jq sudo unzip
 
 RUN apk upgrade --no-cache binutils jq sudo unzip
 
