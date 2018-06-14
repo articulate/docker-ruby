@@ -2,8 +2,9 @@ FROM ruby:2.4-alpine3.7
 
 ENV SERVICE_ROOT /service
 ENV SERVICE_USER service
+ENV NPM_VER=6.1.0
 
-RUN apk add --no-cache make libpq qt git wget yaml postgresql-client xvfb bash nodejs binutils jq sudo unzip
+RUN apk add --no-cache make libpq qt git curl wget yaml postgresql-client xvfb bash nodejs binutils jq sudo unzip
 
 RUN apk upgrade --no-cache binutils jq sudo unzip
 
@@ -15,5 +16,10 @@ WORKDIR $SERVICE_ROOT
 
 ADD https://raw.githubusercontent.com/articulate/docker-consul-template-bootstrap/master/wait-for-it.sh /wait-for-it.sh
 RUN chmod a+rx /wait-for-it.sh
+
+RUN npm uninstall npm -g
+RUN wget https://registry.npmjs.org/npm/-/npm-${NPM_VER}.tgz \
+  && tar xzf npm-${NPM_VER}.tgz \
+  && ./package/scripts/install.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
