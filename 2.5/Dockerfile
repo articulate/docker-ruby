@@ -6,7 +6,32 @@ ENV NPM_VER=6.1.0
 
 ENV NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 
-RUN apk add --no-cache make libpq qt git curl wget yaml postgresql-client xvfb bash nodejs binutils jq sudo unzip ruby-full libffi-dev swig ruby-nokogiri libxml2-dev libxslt-dev build-base libressl-dev
+RUN apk add --no-cache make libpq qt git curl wget yaml postgresql-client xvfb bash nodejs binutils jq sudo unzip libffi-dev swig ruby-nokogiri libxml2-dev libxslt-dev build-base libressl-dev
+
+RUN apk update \
+&& apk add ruby \
+           ruby-full \
+           ruby-bigdecimal \
+           ruby-bundler \
+           ruby-io-console \
+           ruby-irb \
+           ca-certificates \
+           libressl \
+&& apk add --virtual build-dependencies \
+           build-base \
+           ruby-dev \
+           libressl-dev \
+\
+&& bundle config build.nokogiri --use-system-libraries \
+&& bundle config git.allow_insecure true \
+&& gem install json --no-rdoc --no-ri \
+\
+&& gem cleanup \
+&& apk del build-dependencies \
+&& rm -rf /usr/lib/ruby/gems/*/cache/* \
+          /var/cache/apk/* \
+          /tmp/* \
+          /var/tmp/*
 
 RUN apk upgrade --no-cache binutils jq sudo unzip
 
