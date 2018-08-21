@@ -1,4 +1,4 @@
-FROM ruby:2.4-alpine3.7
+FROM ruby:2.4.4-alpine3.7
 
 ENV SERVICE_ROOT /service
 ENV SERVICE_USER service
