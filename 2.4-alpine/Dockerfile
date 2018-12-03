@@ -21,5 +21,7 @@ RUN npm uninstall npm -g
 RUN wget https://registry.npmjs.org/npm/-/npm-${NPM_VER}.tgz \
   && tar xzf npm-${NPM_VER}.tgz \
   && ./package/scripts/install.sh
+RUN rm npm-${NPM_VER}.tgz
+RUN rm -rf /service/package/
 
 ENTRYPOINT ["/entrypoint.sh"]
