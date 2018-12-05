@@ -2,7 +2,7 @@ FROM ruby:2.4-alpine3.7
 
 ENV SERVICE_ROOT /service
 ENV SERVICE_USER service
-ENV NPM_VER=6.1.0
+ENV NPM_VER=6.4.1
 
 RUN apk add --no-cache make libpq qt git curl wget yaml postgresql-client xvfb bash nodejs binutils jq sudo unzip
 
@@ -21,5 +21,7 @@ RUN npm uninstall npm -g
 RUN wget https://registry.npmjs.org/npm/-/npm-${NPM_VER}.tgz \
   && tar xzf npm-${NPM_VER}.tgz \
   && ./package/scripts/install.sh
+RUN rm npm-${NPM_VER}.tgz
+RUN rm -rf /service/package/
 
 ENTRYPOINT ["/entrypoint.sh"]
