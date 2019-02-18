@@ -9,10 +9,14 @@ FROM ruby:2.4-slim-stretch
 #   - postgresql-client requires the presence of man pages for some reason. Debian-slim doesn't have those by default, so we have to add those as a stub (source: https://github.com/dalibo/temboard/issues/211)
 #   - we install Imagemagick in our base image so we can keep it updated in one place, and so we can add a strict security policy by default (see further down)
 RUN apt-get update -qq \
-    && mkdir -p /usr/share/man/man1 && mkdir -p /usr/share/man/man7 \
+    && mkdir -p /usr/share/man/man1 \
+    && mkdir -p /usr/share/man/man7 \
     && apt-get install -y build-essential imagemagick git wget curl xvfb \
     binutils jq sudo unzip qt5-default libyaml-dev libpq-dev \
-    postgresql-client-9.6 && apt-get upgrade -y && rm -rf /var/lib/apt/lists/*
+    postgresql-client-9.6 \
+    && apt-get upgrade -y \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # We want npm in our base image. To get it, we must install nodejs. There is one in apt-get, but it's super old (version ~4). To get a newer node we must first add the nodesource PPA.
 # Source: https://github.com/nodesource/distributions/blob/master/README.md#deb
