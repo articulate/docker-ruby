@@ -8,7 +8,7 @@ FROM ruby:2.5-slim-stretch
 # Notes:
 #
 RUN apt-get update -qq \
-    && apt-get install -y git wget curl xvfb binutils jq sudo unzip \
+    && apt-get install -y make git wget curl xvfb binutils jq sudo unzip \
     && apt-get upgrade -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /usr/share/doc /root/.cache/
