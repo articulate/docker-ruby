@@ -1,5 +1,7 @@
 # Articulate Ruby Images
 
+These are all built on Dockerhub as Automated Builds: https://hub.docker.com/r/articulate/articulate-ruby
+
 ## Ruby 2.7
 
 ### 2.7-buster-slim-minimal
@@ -48,5 +50,3 @@ This is our recommended 2.5 build if you don't need `node`, `qt5`, `imagemagick`
 
 - Node: Latest 8.x
 - Postgres Client: Latest 9.6.x
-
-These are all built on Dockerhub as Automated Builds.
