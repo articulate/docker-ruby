@@ -1,5 +1,5 @@
 # Debian-based image maintained by Ruby, see https://hub.docker.com/_/ruby for a full list of available images.
-# Source for this base image can be found at https://github.com/docker-library/ruby/tree/master/2.4/stretch/slim
+# Source for this base image can be found at https://github.com/docker-library/ruby/tree/master/2.5/stretch/slim
 FROM ruby:2.5-slim-stretch
 
 # Let's update and install the things.
