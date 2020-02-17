@@ -20,8 +20,8 @@ RUN apt-get update -qq \
 
 # We want npm in our base image. To get it, we must install nodejs. There is one in apt-get, but it's super old (version ~4). To get a newer node we must first add the nodesource PPA.
 # Source: https://github.com/nodesource/distributions/blob/master/README.md#deb
-# At the time of writing the installation of Node 8 (LTS) gives us npm 6.4.1. Node 8 will be EOL in December 2019.
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+# At the time of writing the installation of Node 12 (LTS) gives us npm 6.12.
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt-get update -qq && apt-get install -y nodejs
 
 # Add a strict security policy for Imagemagick (note: Imagemagick 7 is currently not available in Debian)
