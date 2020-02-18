@@ -36,6 +36,7 @@ This is our recommended 2.5 build if you don't need `node`, `qt5`, `imagemagick`
 
 - Node: Latest 12.x
 - Postgres Client: Latest 9.6.x
+- QT: Latest available in stretch
 
 ## Ruby 2.4
 
