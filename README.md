@@ -34,6 +34,14 @@ This is our recommended 2.5 build if you don't need `node`, `qt5`, `imagemagick`
 
 ### 2.5-stretch-slim
 
+This is our recommended 2.5 build if you don't need `qt5`
+
+- Node: Latest 12.x
+- Postgres Client: Latest 9.6.x
+- QT: Latest available in stretch
+
+### 2.5-stretch-slim-qt
+
 - Node: Latest 12.x
 - Postgres Client: Latest 9.6.x
 - QT: Latest available in stretch
