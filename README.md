@@ -6,7 +6,7 @@ These are all built on Dockerhub as Automated Builds: https://hub.docker.com/r/a
 
 ### 2.7-buster-slim-minimal
 
-This is our recommended build if you don't need `node`, `qt5`, `imagemagick` or `postgres-client`
+This is our recommended build if you don't need `node`, `imagemagick` or `postgres-client`
 
 ### 2.7-buster-slim
 
@@ -19,7 +19,7 @@ This is our recommended build if you need any of the requirements not provided i
 
 ### 2.6-stretch-slim-minimal
 
-This is our recommended 2.6 build if you don't need `node`, `qt5`, `imagemagick` or `postgres-client`
+This is our recommended 2.6 build if you don't need `node`, `imagemagick` or `postgres-client`
 
 ### 2.6-stretch-slim
 
@@ -34,11 +34,10 @@ This is our recommended 2.5 build if you don't need `node`, `qt5`, `imagemagick`
 
 ### 2.5-stretch-slim
 
-This is our recommended 2.5 build if you don't need `qt5`
+This is our recommended 2.5 build if you don't need `qt5` or `xvfb`
 
 - Node: Latest 12.x
 - Postgres Client: Latest 9.6.x
-- QT: Latest available in stretch
 
 ### 2.5-stretch-slim-qt
 
