@@ -1,7 +1,5 @@
 # Articulate Ruby Images
 
-These are all built on Dockerhub as Automated Builds: https://hub.docker.com/r/articulate/articulate-ruby
-
 ## Ruby 2.7
 
 ### 2.7-buster-slim-minimal
