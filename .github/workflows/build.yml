@@ -6,6 +6,12 @@ on:
       - main
   schedule: # Run everyday
     - cron: "0 0 * * *"
+  workflow_dispatch:
+    inputs:
+      cache:
+        description: Use cache for build
+        required: true
+        default: 'true'
 
 env:
   IMAGE: articulate/articulate-ruby
@@ -33,7 +39,11 @@ jobs:
           TAGS="${{ env.IMAGE }}:${{ matrix.tag }}"
           [ -n "${{ matrix.latest }}" ] && TAGS="${TAGS},${{ env.IMAGE }}:latest"
 
+          NO_CACHE="false"
+          [ "${{ github.event.inputs.cache }}" == "false" ] && NO_CACHE="true"
+
           echo "::set-output name=tags::$TAGS"
+          echo "::set-output name=no_cache::$NO_CACHE"
       - uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -47,3 +57,4 @@ jobs:
           platforms: linux/amd64,linux/arm64/v8
           cache-from: type=registry,ref=${{ env.IMAGE }}:${{ matrix.tag }}
           cache-to: type=inline
+          no-cache: ${{ steps.meta.outputs.no_cache }}
