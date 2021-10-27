@@ -13,6 +13,13 @@ This is our recommended build if you need any of the requirements not provided i
 - Node: Latest 12.x
 - Postgres Client: Latest postgres-client in `buster`
 
+### 2.7-buster-slim-qt
+
+This is our recommended build if you need any of the requirements not provided in `*-minimal` and also need `qt`
+
+- Node: Latest 12.x
+- Postgres Client: Latest postgres-client in `buster`
+
 ## Ruby 2.6
 
 ### 2.6-stretch-slim-minimal

@@ -30,6 +30,7 @@ jobs:
           - 2.6-stretch-slim-minimal
           - 2.7-buster-slim
           - 2.7-buster-slim-minimal
+          - 2.7-buster-slim-qt
     steps:
       - uses: actions/checkout@v2
       - uses: docker/setup-qemu-action@v1
