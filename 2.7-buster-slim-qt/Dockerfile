@@ -12,7 +12,7 @@ RUN apt-get update -qq \
     && mkdir -p /usr/share/man/man1 \
     && mkdir -p /usr/share/man/man7 \
     && apt-get install -y build-essential imagemagick git wget curl \
-    binutils jq sudo unzip qt5-default libyaml-dev libpq-dev \
+    binutils jq sudo unzip qt5-default libqt5webkit5-dev libyaml-dev libpq-dev \
     postgresql-client \
     && apt-get upgrade -y \
     && apt-get clean \
