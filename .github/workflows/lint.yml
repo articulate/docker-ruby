@@ -1,0 +1,26 @@
+name: Lint
+
+on:
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        image:
+          - 2.5-stretch-slim
+          - 2.5-stretch-slim-minimal
+          - 2.5-stretch-slim-qt
+          - 2.6-stretch-slim
+          - 2.6-stretch-slim-minimal
+          - 2.7-buster-slim
+          - 2.7-buster-slim-minimal
+          - 2.7-buster-slim-qt
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hadolint/hadolint-action@v1.6.0
+        with:
+          dockerfile: ${{ matrix.image }}/Dockerfile
+          ignore: DL3008
