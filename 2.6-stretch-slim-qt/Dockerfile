@@ -15,7 +15,7 @@ RUN mkdir -p /usr/share/man/man1 /usr/share/man/man7 \
     && bash /tmp/setup-node.sh \
     && apt-get update -qq \
     && apt-get install --no-install-recommends -y \
-        build-essential imagemagick git wget curl binutils jq sudo unzip \
+        build-essential imagemagick git wget curl xvfb binutils jq sudo unzip \
         qt5-default libqt5webkit5-dev libyaml-dev libpq-dev postgresql-client-9.6 \
         nodejs \
     && apt-get upgrade -y \
