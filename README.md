@@ -31,6 +31,10 @@ This is our recommended 2.6 build if you don't need `node`, `imagemagick` or `po
 - Node: Latest 12.x
 - Postgres Client: Latest 9.6.x
 
+### 2.6-stretch-slim-qt
+
+This is our recommended build if you need any of the requirements not provided in `*-minimal` and also need `qt`
+
 ## Ruby 2.5
 
 ### 2.5-stretch-slim-minimal
