@@ -28,6 +28,7 @@ jobs:
           - 2.5-stretch-slim-qt
           - 2.6-stretch-slim
           - 2.6-stretch-slim-minimal
+          - 2.6-stretch-slim-qt
           - 2.7-buster-slim
           - 2.7-buster-slim-minimal
           - 2.7-buster-slim-qt
