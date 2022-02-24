@@ -22,16 +22,16 @@ This is our recommended build if you need any of the requirements not provided i
 
 ## Ruby 2.6
 
-### 2.6-stretch-slim-minimal
+### 2.6-bullseye-slim-minimal
 
 This is our recommended 2.6 build if you don't need `node`, `imagemagick` or `postgres-client`
 
-### 2.6-stretch-slim
+### 2.6-bullseye-slim
 
-- Node: Latest 12.x
+- Node: Latest 16.x
 - Postgres Client: Latest 9.6.x
 
-### 2.6-stretch-slim-qt
+### 2.6-bullseye-slim-qt
 
 This is our recommended build if you need any of the requirements not provided in `*-minimal` and also need `qt`
 
@@ -53,17 +53,3 @@ This is our recommended 2.5 build if you don't need `qt5` or `xvfb`
 - Node: Latest 12.x
 - Postgres Client: Latest 9.6.x
 - QT: Latest available in stretch
-
-## Ruby 2.4
-
-*Ruby 2.4 is end of life, DO NOT USE*
-
-### 2.4-alpine
-
-- Node: uses the latest node available for alpine 3.7
-- Postgres Client: uses the latest postgres-client available for alpine 3.7
-
-### 2.4-stretch-slim
-
-- Node: Latest 8.x
-- Postgres Client: Latest 9.6.x
