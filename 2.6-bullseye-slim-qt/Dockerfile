@@ -11,18 +11,13 @@ ADD https://deb.nodesource.com/setup_16.x /tmp/setup-node.sh
 # - we install Imagemagick in our base image so we can keep it updated in one place, and so we can add a strict security policy by default (see further down)
 # - We want npm in our base image. To get it, we must install nodejs. There is one in apt-get, but it's super old (version ~4). To get a newer node we must first add the nodesource PPA.
 #   Source: https://github.com/nodesource/distributions/blob/master/README.md#deb
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN mkdir -p /usr/share/man/man1 /usr/share/man/man7 \
     && bash /tmp/setup-node.sh \
     && apt-get update -qq \
     && apt-get install --no-install-recommends -y \
         build-essential imagemagick git wget curl xvfb binutils jq sudo unzip \
         qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools libqt5webkit5-dev \
-        libyaml-dev libpq-dev nodejs \
-    && echo "deb http://apt.postgresql.org/pub/repos/apt bullseye-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
-    && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
-    && apt-get update -qq \
-    && apt-get install --no-install-recommends -y postgresql-client-9.6 \
+        libyaml-dev libpq-dev nodejs postgresql-client \
     && apt-get upgrade -y \
     && apt-get clean \
     # Consul template
