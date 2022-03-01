@@ -29,7 +29,7 @@ This is our recommended 2.6 build if you don't need `node`, `imagemagick` or `po
 ### 2.6-bullseye-slim
 
 - Node: Latest 16.x
-- Postgres Client: Latest 9.6.x
+- Postgres Client: Latest postgres-client in `bullseye`
 
 ### 2.6-bullseye-slim-qt
 
