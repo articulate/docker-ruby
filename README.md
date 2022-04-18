@@ -1,64 +1,44 @@
 # Articulate Ruby Images
 
-## Ruby 2.7
+Base Ruby images for Articulate services.
 
-### 2.7-bullseye-slim
+## Tags
 
-Based off `ruby:2.7-slim-buster`.
+| Tag                       | Ruby | Node | Postgres | ImageMagick | QT |
+|---------------------------|------|------|----------|-------------|----|
+| 2.7-bullseye-slim         | 2.7  | 16   | ✅       | ✅          | ❌ |
+| 2.7-buster-slim-minimal   | 2.7  | ❌   | ❌       | ❌          | ❌ |
+| 2.7-buster-slim           | 2.7  | 12   | ✅       | ✅          | ❌ |
+| 2.7-buster-slim-qt        | 2.7  | 12   | ✅       | ✅          | ✅ |
+| 2.6-bullseye-slim-minimal | 2.6  | ❌   | ❌       | ❌          | ❌ |
+| 2.6-bullseye-slim         | 2.6  | 16   | ✅       | ✅          | ❌ |
+| 2.6-bullseye-slim-qt      | 2.6  | 16   | ✅       | ✅          | ✅ |
+| 2.6-buster-slim-minimal   | 2.6  | ❌   | ❌       | ❌          | ❌ |
+| 2.6-buster-slim           | 2.6  | 12   | ✅       | ✅          | ❌ |
+| 2.6-buster-slim-qt        | 2.6  | 12   | ✅       | ✅          | ✅ |
+| 2.5-stretch-slim-minimal  | 2.5  | ❌   | ❌       | ❌          | ❌ |
+| 2.5-stretch-slim          | 2.5  | 12   | ✅       | ✅          | ❌ |
+| 2.5-stretch-slim-qt       | 2.5  | 12   | ✅       | ✅          | ✅ |
 
-- [consul bootstrap](https://github.com/articulate/docker-consul-template-bootstrap)
-- Node 16.x
-- Postgres Client
-- ImageMagick
+## Adding a Tag
 
-### 2.7-buster-slim-minimal
+1. Create directory for the tag `{version}-{os}-{variant}`
+2. Add Dockerfile and any related files to directory
+3. Update the `Makefile`
+4. Add the tag to the Github Action workflows (`.github/workflows`)
+5. Create a Pull Request
 
-This is our recommended build if you don't need `node`, `imagemagick` or `postgres-client`
+## Testing Locally
 
-### 2.7-buster-slim
+1. Run `make` to build a `local/articulate-ruby` image locally
+2. Change the first line of your `Dockerfile` to be:
 
-This is our recommended build if you need any of the requirements not provided in `*-minimal`
+```dockerfile
+FROM local/articulate-ruby:<tag>
+```
 
-- Node: Latest 12.x
-- Postgres Client: Latest postgres-client in `buster`
+3. Build and run the image
 
-### 2.7-buster-slim-qt
-
-This is our recommended build if you need any of the requirements not provided in `*-minimal` and also need `qt`
-
-- Node: Latest 12.x
-- Postgres Client: Latest postgres-client in `buster`
-
-## Ruby 2.6
-
-### 2.6-bullseye-slim-minimal
-
-This is our recommended 2.6 build if you don't need `node`, `imagemagick` or `postgres-client`
-
-### 2.6-bullseye-slim
-
-- Node: Latest 16.x
-- Postgres Client: Latest postgres-client in `bullseye`
-
-### 2.6-bullseye-slim-qt
-
-This is our recommended build if you need any of the requirements not provided in `*-minimal` and also need `qt`
-
-## Ruby 2.5
-
-### 2.5-stretch-slim-minimal
-
-This is our recommended 2.5 build if you don't need `node`, `qt5`, `imagemagick` or `postgres-client`
-
-### 2.5-stretch-slim
-
-This is our recommended 2.5 build if you don't need `qt5` or `xvfb`
-
-- Node: Latest 12.x
-- Postgres Client: Latest 9.6.x
-
-### 2.5-stretch-slim-qt
-
-- Node: Latest 12.x
-- Postgres Client: Latest 9.6.x
-- QT: Latest available in stretch
+```shell
+docker-compose build --no-cache && docker-compose up
+```
