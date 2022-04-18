@@ -2,6 +2,15 @@
 
 ## Ruby 2.7
 
+### 2.7-bullseye-slim
+
+Based off `ruby:2.7-slim-buster`.
+
+- [consul bootstrap](https://github.com/articulate/docker-consul-template-bootstrap)
+- Node 16.x
+- Postgres Client
+- ImageMagick
+
 ### 2.7-buster-slim-minimal
 
 This is our recommended build if you don't need `node`, `imagemagick` or `postgres-client`
