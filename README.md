@@ -6,6 +6,9 @@ Base Ruby images for Articulate services.
 
 | Tag                       | Ruby | Node | Postgres | ImageMagick | QT |
 |---------------------------|------|------|----------|-------------|----|
+| 3.1-bullseye-slim-minimal | 3.1  | ❌   | ❌       | ❌          | ❌ |
+| 3.1-bullseye-slim         | 3.1  | 16   | ✅       | ✅          | ❌ |
+| 3.1-bullseye-slim-qt      | 3.1  | 16   | ✅       | ✅          | ✅ |
 | 2.7-bullseye-slim         | 2.7  | 16   | ✅       | ✅          | ❌ |
 | 2.7-buster-slim-minimal   | 2.7  | ❌   | ❌       | ❌          | ❌ |
 | 2.7-buster-slim           | 2.7  | 12   | ✅       | ✅          | ❌ |
