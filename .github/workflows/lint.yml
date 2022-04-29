@@ -23,6 +23,9 @@ jobs:
           - 2.7-buster-slim-minimal
           - 2.7-buster-slim-qt
           - 2.7-bullseye-slim
+          - 3.1-bullseye-slim
+          - 3.1-bullseye-slim-minimal
+          - 3.1-bullseye-slim-qt
     steps:
       - uses: actions/checkout@v2
       - uses: hadolint/hadolint-action@v1.6.0
