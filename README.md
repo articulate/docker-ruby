@@ -10,6 +10,7 @@ Base Ruby images for Articulate services.
 | 3.1-bullseye-slim         | 3.1  | 16   | ✅       | ✅          | ❌ |
 | 3.1-bullseye-slim-qt      | 3.1  | 16   | ✅       | ✅          | ✅ |
 | 2.7-bullseye-slim         | 2.7  | 16   | ✅       | ✅          | ❌ |
+| 2.6-bullseye-slim-qt      | 2.7  | 16   | ✅       | ✅          | ✅ |
 | 2.7-buster-slim-minimal   | 2.7  | ❌   | ❌       | ❌          | ❌ |
 | 2.7-buster-slim           | 2.7  | 12   | ✅       | ✅          | ❌ |
 | 2.7-buster-slim-qt        | 2.7  | 12   | ✅       | ✅          | ✅ |
