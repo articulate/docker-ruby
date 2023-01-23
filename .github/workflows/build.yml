@@ -37,6 +37,7 @@ jobs:
           - 2.7-buster-slim-minimal
           - 2.7-buster-slim-qt
           - 2.7-bullseye-slim
+          - 2.7-bullseye-slim-qt
           - 3.1-bullseye-slim
           - 3.1-bullseye-slim-minimal
           - 3.1-bullseye-slim-qt
