@@ -1,18 +1,21 @@
 name: Build
 
 on:
+  pull_request:
   push:
     branches:
       - main
   schedule:
-    # Run everyday
-    - cron: "0 0 * * *"
+    # every weekday
+    - cron: '0 0 * * 1-5'
+    # every sunday (no-cache)
+    - cron: '0 0 * * 0'
   workflow_dispatch:
     inputs:
-      cache:
-        description: Use cache for build
-        required: true
-        default: 'true'
+      no-cache:
+        description: 'Skip Docker cache'
+        type: boolean
+        default: false
 
 env:
   IMAGE: articulate/articulate-ruby
@@ -45,16 +48,6 @@ jobs:
       - uses: actions/checkout@v3
       - uses: docker/setup-qemu-action@v2
       - uses: docker/setup-buildx-action@v2
-      - id: meta
-        run: |
-          TAGS="${{ env.IMAGE }}:${{ matrix.tag }}"
-          [ -n "${{ matrix.latest }}" ] && TAGS="${TAGS},${{ env.IMAGE }}:latest"
-
-          NO_CACHE="false"
-          [ "${{ github.event.inputs.cache }}" == "false" ] && NO_CACHE="true"
-
-          echo "tags=$TAGS" >> $GITHUB_OUTPUT
-          echo "no_cache=$NO_CACHE" >> $GITHUB_OUTPUT
       - uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -62,10 +55,10 @@ jobs:
       - uses: docker/build-push-action@v3
         with:
           context: ${{ matrix.tag }}
-          pull: true
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          pull: ${{ github.event_name != 'pull_request' }}
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ env.IMAGE }}:${{ matrix.tag }}
           platforms: linux/amd64,linux/arm64/v8
           cache-from: type=registry,ref=${{ env.IMAGE }}:${{ matrix.tag }}
           cache-to: type=inline
-          no-cache: ${{ steps.meta.outputs.no_cache }}
+          no-cache: ${{ github.event.schedule == '0 0 * * 0' || (github.event_name == 'workflow_dispatch' && inputs.no-cache) }}
