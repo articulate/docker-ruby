@@ -1,20 +1,23 @@
+# syntax=docker/dockerfile:1
 FROM ruby:2.7-slim-buster
 
 ENV SERVICE_ROOT /service
 ENV SERVICE_USER service
 
-ADD https://raw.githubusercontent.com/articulate/docker-consul-template-bootstrap/master/install.sh /tmp/consul_template_install.sh
-ADD https://raw.githubusercontent.com/articulate/docker-consul-template-bootstrap/master/wait-for-it.sh /wait-for-it.sh
+ARG TARGETARCH
+ARG AWSCLI_VERSION=2.9.15
+ADD --chmod=755 https://github.com/articulate/docker-consul-template-bootstrap/releases/latest/download/docker-consul-template-bootstrap_linux_${TARGETARCH} /entrypoint
+ADD --chmod=755 https://raw.githubusercontent.com/vishnubob/wait-for-it/81b1373f17855a4dc21156cfe1694c31d7d1792e/wait-for-it.sh /wait-for-it.sh
 
 RUN apt-get update -qq \
     && apt-get install --no-install-recommends -y \
-        make git wget curl xvfb binutils jq sudo unzip \
+        make git wget curl xvfb binutils jq sudo unzip ca-certificates \
     && apt-get upgrade -y \
     && apt-get clean \
-    # Consul template
-    && bash /tmp/consul_template_install.sh \
-    # Make wait-for-it executable
-    && chmod a+rx /wait-for-it.sh \
+    # AWSCLI (to be removed in a future release)
+    && curl -s "https://awscli.amazonaws.com/awscli-exe-linux-$(uname -m)-${AWSCLI_VERSION}.zip" -o /tmp/awscliv2.zip \
+    && unzip -d /tmp /tmp/awscliv2.zip \
+    && /tmp/aws/install \
     # Create our service group and user
     && groupadd $SERVICE_USER && useradd --create-home --home $SERVICE_ROOT --gid $SERVICE_USER --shell /bin/bash $SERVICE_USER \
     # Cleanup
@@ -25,4 +28,4 @@ WORKDIR $SERVICE_ROOT
 # Our entrypoint will pull in our environment variables from Consul and Vault
 # and execute whatever command we provided the container.
 # See https://github.com/articulate/docker-consul-template-bootstrap/blob/master/entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT [ "/entrypoint" ]
