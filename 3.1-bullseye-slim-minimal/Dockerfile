@@ -14,6 +14,7 @@ RUN apt-get update -qq \
         make git wget curl binutils jq sudo unzip ca-certificates \
     && apt-get upgrade -y \
     && apt-get clean \
+    && ln -s /entrypoint /entrypoint.sh \
     # AWSCLI (to be removed in a future release)
     && curl -s "https://awscli.amazonaws.com/awscli-exe-linux-$(uname -m)-${AWSCLI_VERSION}.zip" -o /tmp/awscliv2.zip \
     && unzip -d /tmp /tmp/awscliv2.zip \

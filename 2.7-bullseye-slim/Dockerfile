@@ -20,6 +20,7 @@ RUN bash /tmp/setup-node.sh \
         ca-certificates libyaml-dev libpq-dev nodejs postgresql-client \
     && apt-get upgrade -y \
     && apt-get clean \
+    && ln -s /entrypoint /entrypoint.sh \
     # AWSCLI (to be removed in a future release)
     && curl -s "https://awscli.amazonaws.com/awscli-exe-linux-$(uname -m)-${AWSCLI_VERSION}.zip" -o /tmp/awscliv2.zip \
     && unzip -d /tmp /tmp/awscliv2.zip \
