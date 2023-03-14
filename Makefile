@@ -1,4 +1,4 @@
-all: 2.5 2.6 2.7 3.1
+all: 2.5 2.6 2.7 3.1 3.2
 
 2.5: 2.5-stretch-slim 2.5-stretch-slim-minimal 2.5-stretch-slim-qt
 
@@ -8,7 +8,9 @@ all: 2.5 2.6 2.7 3.1
 
 3.1: 3.1-bullseye-slim 3.1-bullseye-slim-minimal 3.1-bullseye-slim-qt
 
-.PHONY: all 2.5 2.6 2.7 3.1
+3.2: 3.2-bullseye-slim 3.2-bullseye-slim-minimal 3.2-bullseye-slim-qt
+
+.PHONY: all 2.5 2.6 2.7 3.1 3.2
 
 2.5-stretch-slim:
 	docker build -t local/articulate-ruby:2.5-stretch-slim 2.5-stretch-slim
@@ -77,3 +79,15 @@ all: 2.5 2.6 2.7 3.1
 3.1-bullseye-slim-qt:
 	docker build -t local/articulate-ruby:3.1-bullseye-slim-qt 3.1-bullseye-slim-qt
 .PHONY: 3.1-bullseye-slim-qt
+
+3.2-bullseye-slim:
+	docker build -t local/articulate-ruby:3.2-bullseye-slim 3.2-bullseye-slim
+.PHONY: 3.2-bullseye-slim
+
+3.2-bullseye-slim-minimal:
+	docker build -t local/articulate-ruby:3.2-bullseye-slim-minimal 3.2-bullseye-slim-minimal
+.PHONY: 3.2-bullseye-slim-minimal
+
+3.2-bullseye-slim-qt:
+	docker build -t local/articulate-ruby:3.2-bullseye-slim-qt 3.2-bullseye-slim-qt
+.PHONY: 3.2-bullseye-slim-qt
