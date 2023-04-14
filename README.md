@@ -17,15 +17,6 @@ Base Ruby images for Articulate services.
 | 2.7-buster-slim-minimal   | 2.7  | ❌   | ❌       | ❌          | ❌ |
 | 2.7-buster-slim           | 2.7  | 12   | ✅       | ✅          | ❌ |
 | 2.7-buster-slim-qt        | 2.7  | 12   | ✅       | ✅          | ✅ |
-| 2.6-bullseye-slim-minimal | 2.6  | ❌   | ❌       | ❌          | ❌ |
-| 2.6-bullseye-slim         | 2.6  | 16   | ✅       | ✅          | ❌ |
-| 2.6-bullseye-slim-qt      | 2.6  | 16   | ✅       | ✅          | ✅ |
-| 2.6-buster-slim-minimal   | 2.6  | ❌   | ❌       | ❌          | ❌ |
-| 2.6-buster-slim           | 2.6  | 12   | ✅       | ✅          | ❌ |
-| 2.6-buster-slim-qt        | 2.6  | 12   | ✅       | ✅          | ✅ |
-| 2.5-stretch-slim-minimal  | 2.5  | ❌   | ❌       | ❌          | ❌ |
-| 2.5-stretch-slim          | 2.5  | 12   | ✅       | ✅          | ❌ |
-| 2.5-stretch-slim-qt       | 2.5  | 12   | ✅       | ✅          | ✅ |
 
 ## Adding a Tag
 
@@ -37,15 +28,6 @@ Base Ruby images for Articulate services.
 
 ## Testing Locally
 
-1. Run `make` to build a `local/articulate-ruby` image locally
-2. Change the first line of your `Dockerfile` to be:
-
-```dockerfile
-FROM local/articulate-ruby:<tag>
-```
-
-3. Build and run the image
-
-```shell
-docker-compose build --no-cache && docker-compose up
-```
+1. Run `make` to build a `articulate/articulate-ruby` image locally
+2. Run `docker compose build --no-cache`
+3. Run docker-compose as normal `docker compose up`
