@@ -1,33 +1,49 @@
-# Articulate Ruby Images
+# Docker Ruby Images
 
 Base Ruby images for Articulate services.
 
+## What's Included
+
+* [docker-bootstrap](https://github.com/articulate/docker-bootstrap) entrypoint
+  for loading environment variables from Consul and Vault.
+* [secrets](https://github.com/articulate/docker-bootstrap/blob/main/scripts/docker-secrets)
+  to load Docker secrets as environment variables.
+* [install_packages](https://github.com/articulate/docker-bootstrap/blob/main/scripts/install_packages)
+  to install apt packages.
+* [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+  for interacting with AWS services.
+
 ## Tags
 
-| Tag                       | Ruby | Node | Postgres | ImageMagick | QT |
-|---------------------------|------|------|----------|-------------|----|
-| 3.2-bullseye-slim-minimal | 3.2  | ❌   | ❌       | ❌          | ❌ |
-| 3.2-bullseye-slim         | 3.2  | 18   | ✅       | ✅          | ❌ |
-| 3.2-bullseye-slim-qt      | 3.2  | 18   | ✅       | ✅          | ✅ |
-| 3.1-bullseye-slim-minimal | 3.1  | ❌   | ❌       | ❌          | ❌ |
-| 3.1-bullseye-slim         | 3.1  | 16   | ✅       | ✅          | ❌ |
-| 3.1-bullseye-slim-qt      | 3.1  | 16   | ✅       | ✅          | ✅ |
-| 2.7-bullseye-slim         | 2.7  | 16   | ✅       | ✅          | ❌ |
-| 2.6-bullseye-slim-qt      | 2.7  | 16   | ✅       | ✅          | ✅ |
-| 2.7-buster-slim-minimal   | 2.7  | ❌   | ❌       | ❌          | ❌ |
-| 2.7-buster-slim           | 2.7  | 12   | ✅       | ✅          | ❌ |
-| 2.7-buster-slim-qt        | 2.7  | 12   | ✅       | ✅          | ✅ |
+> 🌟 recommended image
 
-## Adding a Tag
+* __articulate/ruby:3.2__ 🌟
+* __articulate/ruby:3.2-node__ 🌟
+* articulate/articulate-ruby:3.2-bullseye-slim-minimal
+* articulate/articulate-ruby:3.2-bullseye-slim
+* articulate/articulate-ruby:3.2-bullseye-slim-qt
+* articulate/articulate-ruby:3.1-bullseye-slim-minimal
+* articulate/articulate-ruby:3.1-bullseye-slim
+* articulate/articulate-ruby:3.1-bullseye-slim-qt
+* articulate/articulate-ruby:2.7-bullseye-slim
+* articulate/articulate-ruby:2.7-bullseye-slim-qt
+* articulate/articulate-ruby:2.7-buster-slim-minimal
+* articulate/articulate-ruby:2.7-buster-slim
+* articulate/articulate-ruby:2.7-buster-slim-qt
 
-1. Create directory for the tag `{version}-{os}-{variant}`
-2. Add Dockerfile and any related files to directory
-3. Update the `Makefile`
-4. Add the tag to the Github Action workflows (`.github/workflows`)
-5. Create a Pull Request
+### articulate/ruby vs articulate/articulate-ruby
 
-## Testing Locally
+`articulate/articulate-ruby` are the legacy Docker images. These run as root and
+include additional software not always needed. Use `articulate/ruby` where possible
+and install your own software with `install_packages`.
 
-1. Run `make` to build a `articulate/articulate-ruby` image locally
-2. Run `docker compose build --no-cache`
-3. Run docker-compose as normal `docker compose up`
+## Creating a new image
+
+The easiest way to create a new image is to copy an existing one and change the
+base image. If creating from scratch, the images need the following:
+
+* Everything listed in [What's included](#whats-included)
+* `make` for internal tooling.
+* A _service_ user and group with a GID and UID of 1001. This should be the default
+  user.
+* A _/service_ directory as the default working directory.
