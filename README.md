@@ -17,8 +17,10 @@ Base Ruby images for Articulate services.
 
 > 🌟 recommended image
 
-* __articulate/ruby:3.2__ 🌟
-* __articulate/ruby:3.2-node__ 🌟
+* __articulate/ruby:3.3__ 🌟
+* __articulate/ruby:3.3-node__ 🌟
+* articulate/ruby:3.2
+* articulate/ruby:3.2-node
 * articulate/articulate-ruby:3.2-bullseye-slim-minimal
 * articulate/articulate-ruby:3.2-bullseye-slim
 * articulate/articulate-ruby:3.2-bullseye-slim-qt
