@@ -27,11 +27,6 @@ Base Ruby images for Articulate services.
 * articulate/articulate-ruby:3.1-bullseye-slim-minimal
 * articulate/articulate-ruby:3.1-bullseye-slim
 * articulate/articulate-ruby:3.1-bullseye-slim-qt
-* articulate/articulate-ruby:2.7-bullseye-slim
-* articulate/articulate-ruby:2.7-bullseye-slim-qt
-* articulate/articulate-ruby:2.7-buster-slim-minimal
-* articulate/articulate-ruby:2.7-buster-slim
-* articulate/articulate-ruby:2.7-buster-slim-qt
 
 ### articulate/ruby vs articulate/articulate-ruby
 
