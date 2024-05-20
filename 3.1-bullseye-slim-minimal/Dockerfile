@@ -13,7 +13,7 @@ ADD --chmod=755 https://raw.githubusercontent.com/vishnubob/wait-for-it/81b1373f
 
 RUN apt-get update -qq \
     && apt-get install --no-install-recommends -y \
-        make git wget curl binutils jq sudo unzip ca-certificates \
+        make git wget curl binutils jq sudo unzip ca-certificates dumb-init \
     && apt-get upgrade -y \
     && apt-get clean \
     && ln -s /entrypoint /entrypoint.sh \
@@ -32,4 +32,4 @@ WORKDIR $SERVICE_ROOT
 # Our entrypoint will pull in our environment variables from Consul and Vault
 # and execute whatever command we provided the container.
 # See https://github.com/articulate/docker-bootstrap
-ENTRYPOINT [ "/entrypoint" ]
+ENTRYPOINT [ "dumb-init", "--", "/entrypoint" ]
