@@ -12,7 +12,7 @@ ADD --chmod=755 https://raw.githubusercontent.com/articulate/docker-bootstrap/ma
 ADD --chmod=755 https://raw.githubusercontent.com/articulate/docker-bootstrap/main/scripts/awscli.sh /tmp/awscli.sh
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN install_packages make && /tmp/awscli.sh && rm /tmp/awscli.sh \
+RUN install_packages make dumb-init && /tmp/awscli.sh && rm /tmp/awscli.sh \
     # Install Node.js
     && install_packages curl gnupg \
     && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
@@ -33,4 +33,4 @@ WORKDIR $SERVICE_ROOT
 # Our entrypoint will pull in our environment variables from Consul and Vault,
 # and execute whatever command we provided the container.
 # See https://github.com/articulate/docker-bootstrap
-ENTRYPOINT [ "/entrypoint" ]
+ENTRYPOINT [ "dumb-init", "--", "/entrypoint" ]

@@ -22,7 +22,7 @@ RUN mkdir -p /usr/share/man/man1 /usr/share/man/man7 \
     && apt-get install --no-install-recommends -y \
         build-essential imagemagick git wget curl xvfb binutils jq sudo unzip \
         qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools libqt5webkit5-dev \
-        ca-certificates libyaml-dev libpq-dev nodejs postgresql-client \
+        ca-certificates libyaml-dev libpq-dev nodejs postgresql-client dumb-init \
     && apt-get upgrade -y \
     && apt-get clean \
     && ln -s /entrypoint /entrypoint.sh \
@@ -44,4 +44,4 @@ WORKDIR $SERVICE_ROOT
 # Our entrypoint will pull in our environment variables from Consul and Vault
 # and execute whatever command we provided the container.
 # See https://github.com/articulate/docker-bootstrap
-ENTRYPOINT [ "/entrypoint" ]
+ENTRYPOINT [ "dumb-init", "--", "/entrypoint" ]
