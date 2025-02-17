@@ -26,7 +26,7 @@ jobs:
     outputs:
       dockerfiles: ${{ steps.scan.outputs.dockerfiles }}
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04-4core
     needs: setup
     strategy:
       fail-fast: false
