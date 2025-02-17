@@ -12,15 +12,20 @@ ADD --chmod=755 https://raw.githubusercontent.com/articulate/docker-bootstrap/ma
 ADD --chmod=755 https://raw.githubusercontent.com/vishnubob/wait-for-it/81b1373f17855a4dc21156cfe1694c31d7d1792e/wait-for-it.sh /wait-for-it.sh
 ADD https://deb.nodesource.com/setup_16.x /tmp/setup-node.sh
 
+# libc-bin had some cached files that started causing a segfault in the apt-get update
+#   Source: https://stackoverflow.com/a/78107622
+
 # - postgresql-client requires the presence of man pages for some reason. Debian-slim doesn't have those by default, so we have to add those as a stub (source: https://github.com/dalibo/temboard/issues/211)
 # - we install Imagemagick in our base image so we can keep it updated in one place, and so we can add a strict security policy by default (see further down)
 # - We want npm in our base image. To get it, we must install nodejs. There is one in apt-get, but it's super old (version ~4). To get a newer node we must first add the nodesource PPA.
 #   Source: https://github.com/nodesource/distributions/blob/master/README.md#deb
-RUN mkdir -p /usr/share/man/man1 /usr/share/man/man7 \
+RUN rm /var/lib/dpkg/info/libc-bin.* \
+    && apt-get clean \
+    && mkdir -p /usr/share/man/man1 /usr/share/man/man7 \
     && bash /tmp/setup-node.sh \
     && apt-get update -qq \
     && apt-get install --no-install-recommends -y \
-        build-essential imagemagick git wget curl binutils jq sudo unzip \
+        libc-bin build-essential imagemagick git wget curl binutils jq sudo unzip \
         ca-certificates libyaml-dev libpq-dev nodejs postgresql-client dumb-init \
     && apt-get upgrade -y \
     && apt-get clean \
