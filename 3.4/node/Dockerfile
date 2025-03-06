@@ -1,4 +1,4 @@
-# tags=articulate/ruby:3.3-node
+# tags=articulate/ruby:3.4-node
 # syntax=docker/dockerfile:1
 FROM ruby:3.4-slim-bookworm
 
