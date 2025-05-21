@@ -25,14 +25,12 @@ Base Ruby images for Articulate services.
 * articulate/ruby:3.2-node
 
 Deprecated / Legacy Images
-> Please utilize one of the articulate/ruby images above.
+
+> Use one of the articulate/ruby images above.
 
 * articulate/articulate-ruby:3.2-bullseye-slim-minimal
 * articulate/articulate-ruby:3.2-bullseye-slim
 * articulate/articulate-ruby:3.2-bullseye-slim-qt
-* articulate/articulate-ruby:3.1-bullseye-slim-minimal
-* articulate/articulate-ruby:3.1-bullseye-slim
-* articulate/articulate-ruby:3.1-bullseye-slim-qt
 
 ### articulate/ruby vs articulate/articulate-ruby
 
