@@ -24,20 +24,6 @@ Base Ruby images for Articulate services.
 * articulate/ruby:3.2
 * articulate/ruby:3.2-node
 
-Deprecated / Legacy Images
-
-> Use one of the articulate/ruby images above.
-
-* articulate/articulate-ruby:3.2-bullseye-slim-minimal
-* articulate/articulate-ruby:3.2-bullseye-slim
-* articulate/articulate-ruby:3.2-bullseye-slim-qt
-
-### articulate/ruby vs articulate/articulate-ruby
-
-`articulate/articulate-ruby` are the legacy Docker images. These run as root and
-include additional software not always needed. Use `articulate/ruby` where possible
-and install your own software with `install_packages`.
-
 ## Creating a new image
 
 The easiest way to create a new image is to copy an existing one and change the
