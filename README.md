@@ -17,6 +17,8 @@ Base Ruby images for Articulate services.
 
 > 🌟 recommended image
 
+* __articulate/ruby:4.0__ 🌟
+* __articulate/ruby:4.0-node__ 🌟
 * __articulate/ruby:3.4__ 🌟
 * __articulate/ruby:3.4-node__ 🌟
 * articulate/ruby:3.3
